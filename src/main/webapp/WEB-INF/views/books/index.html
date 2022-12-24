@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все книги</title>
+</head>
+<body>
+
+<!--Пройтись по списку через таймлиф-->
+<!--books - список, который вернет метод index()-->
+<div th:each="book : ${books}">
+    <!--  Делаем ссылку из каждой книги, чтобы перейти внутрь по ее id -->
+    <a th:href="@{/books/{id} (id=${book.getBook_id()})}"
+       th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">book</a>
+</div>
+
+<br/> <!--Пустая строка-->
+<hr/> <!--Горизонтальная линия-->
+
+<!--Кнопка для создания новой книги-->
+<a href="/books/new">Добавить книгу</a>
+<br/> <!--Пустая строка-->
+<a href="/books?sort_by_year=true">Сортировать книги по году</a>
+
+</body>
+</html>

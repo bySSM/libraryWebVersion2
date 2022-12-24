@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Все люди</title>
+</head>
+<body>
+
+<!--Пройтись по списку через таймлиф-->
+<!--person - переменная, которую только что создали в таймлифе-->
+<div th:each="person : ${people}">
+  <!--  Делаем ссылку из каждого человека, чтобы перейти внутрь по его id -->
+  <a th:href="@{/people/{id} (id=${person.getUser_id()})}"
+     th:text="${person.getName() + ', ' + person.getYear_of_birth()}">user</a>
+</div>
+
+<!--Кнопка для создания нового человека-->
+<br/> <!--Пустая строка-->
+<hr/> <!--Горизонтальная линия-->
+
+<a href="/people/new">Добавить человека</a>
+
+</body>
+</html>
